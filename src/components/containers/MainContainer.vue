@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="container mx-auto px-52">
+    <div class="container mx-auto px-52 mt-3">
       <slot></slot>
     </div>
   </div>

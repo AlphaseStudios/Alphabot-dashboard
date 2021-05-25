@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-5xl font-medium mt-2 mb-8">Component showcase</p>
+    <p class="text-5xl font-medium mb-8">Component showcase</p>
     <div>
       <div class="text-3xl">Buttons</div>
       <div class="text-gray-600 text-lg mb-3">
@@ -33,7 +33,7 @@
     <div class="mt-16">
       <div class="text-3xl">Cards</div>
       <div class="text-xl mb-3">Those are the current available card styles:</div>
-      <Card>
+      <TextCard>
         <template v-slot:title>Elias Val</template>
         <template v-slot:subtitle>Sr. software engineer at Alphase</template>
         <template
@@ -42,7 +42,7 @@
           well-known bot Alphabot!</template
         >
         <template v-slot:footer>I am a neet footer</template>
-      </Card>
+      </TextCard>
     </div>
     <div>4</div>
     <div>5</div>
@@ -52,12 +52,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
-import Card from '@/components/Card.vue';
+import TextCard from '@/components/TextCard.vue';
 
 @Component({
   components: {
     Button,
-    Card,
+    TextCard,
   },
 })
 export default class Home extends Vue { }

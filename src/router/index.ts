@@ -1,30 +1,40 @@
 import feathersClient from '@/feathers-client';
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '@/views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/pick',
+    name: 'dashboard pick',
+    component: () => import('@/views/dashboard/ServerPicker.vue'),
+  },
+  {
+    path: '/dashboard/:serverId',
     name: 'dashboard overview',
-    component: () => import('../views/dashboard/Overview.vue'),
+    component: () => import('@/views/dashboard/Overview.vue'),
   },
   {
     path: '/account',
     name: 'account',
-    component: () => import('../views/Account.vue'),
+    component: () => import('@/views/Account.vue'),
   },
   {
     path: '/oauth/perform',
     name: 'oauth perform',
-    component: () => import('../views/Login.vue'),
+    component: () => import('@/views/Login.vue'),
+  },
+  {
+    path: '*',
+    name: '404',
+    component: () => import('@/views/NotFound.vue'),
   },
 ];
 
