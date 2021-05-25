@@ -9,7 +9,7 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import MainContainer from './container/MainContainer.vue';
+import MainContainer from './components/containers/MainContainer.vue';
 
 @Component({
   components: {
