@@ -37,13 +37,14 @@ router.beforeEach(async (to, from, next) => {
 
   // Authentication
   if (!feathersClient.authentication.authenticated) {
-    feathersClient.authenticate().then((user) => {
+    await feathersClient.authenticate().then((user) => {
       console.log(user);
     }).catch((err) => {
-      if (!err.data?.reason) window.location.replace('/oauth/perform');
+      console.error(err);
+      if (!err.data?.reason && (to.name !== 'oauth perform' || to.path !== '/oauth/perform')) window.location.replace('/oauth/perform');
     });
-    next();
   }
+  next();
 });
 
 export default router;

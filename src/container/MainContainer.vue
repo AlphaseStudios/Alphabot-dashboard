@@ -1,15 +1,6 @@
 <template>
   <div>
-    <nav></nav>
-    Container go brrr
+    <div class="bg-gray-800 h-16"></div>
     <slot></slot>
   </div>
 </template>
-
-<style scoped>
-nav {
-  background: #282828;
-  height: 60px;
-  box-shadow: black 0 20px 20px;
-}
-</style>
