@@ -12,17 +12,19 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
+    path: '/dashboard',
+    name: 'dashboard overview',
+    component: () => import('../views/dashboard/Overview.vue'),
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: () => import('../views/Account.vue'),
+  },
+  {
     path: '/oauth/perform',
     name: 'oauth perform',
     component: () => import('../views/Login.vue'),
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
 ];
 

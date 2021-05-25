@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-52">
+  <div>
     <p class="text-5xl font-medium mt-2 mb-8">Component showcase</p>
     <div>
       <div class="text-3xl">Buttons</div>
@@ -24,7 +24,9 @@
           <div class="bg-gray-800 text-white p-3 rounded mt-3 mb-3">
             &lt;Button width="full"&gt;...&lt;/Button&gt;
           </div>
-          <div class="text-gray-500">Also works with other widths. (like 50)</div>
+          <div class="text-gray-500">
+            Also works with other widths. (like 50)
+          </div>
         </li>
       </ul>
     </div>
