@@ -30,7 +30,20 @@
         </li>
       </ul>
     </div>
-    <div>3</div>
+    <div class="mt-16">
+      <div class="text-3xl">Cards</div>
+      <div class="text-xl mb-3">Those are the current available card styles:</div>
+      <Card>
+        <template v-slot:title>Elias Val</template>
+        <template v-slot:subtitle>Sr. software engineer at Alphase</template>
+        <template
+          >One of our team members, Elias Val, age 15, is a Sr. software
+          developer at the small game studio called Alphase. He helped make the
+          well-known bot Alphabot!</template
+        >
+        <template v-slot:footer>I am a neet footer</template>
+      </Card>
+    </div>
     <div>4</div>
     <div>5</div>
   </div>
@@ -39,10 +52,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
+import Card from '@/components/Card.vue';
 
 @Component({
   components: {
     Button,
+    Card,
   },
 })
 export default class Home extends Vue { }
