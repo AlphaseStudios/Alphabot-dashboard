@@ -19,6 +19,13 @@ const routes: Array<RouteConfig> = [
   {
     path: '/dashboard/:serverId',
     name: 'dashboard overview',
+    props: true,
+    component: () => import('@/views/dashboard/Overview.vue'),
+  },
+  {
+    path: '/dashboard/:serverId/:category/:index',
+    name: 'dashboard category',
+    props: true,
     component: () => import('@/views/dashboard/Overview.vue'),
   },
   {
@@ -40,7 +47,6 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes,
 });
 
@@ -52,7 +58,7 @@ router.beforeEach(async (to, from, next) => {
     await feathersClient.authenticate().then((user) => {
       console.log(user);
     }).catch((err) => {
-      console.error(err);
+      console.log('[Auth] Not authenticated. Prompting login...');
       if (!err.data?.reason && (to.name !== 'oauth perform' || to.path !== '/oauth/perform')) window.location.replace('/oauth/perform');
     });
   }

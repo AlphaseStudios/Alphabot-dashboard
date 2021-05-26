@@ -1,29 +1,27 @@
 <template>
   <div>
-    <SideBar :categories="{'1': ['a', 'b', 'c', 'd', 'e', 'f', 'w'], '2': ['2', '3'], '3': ['t', 't']}"></SideBar>
+    serverId: {{ serverId }}<br />
+    Farewell message: <span ref="data">...</span>
   </div>
 </template>
 
 <script lang="ts">
+import feathersClient from '@/feathers-client';
 import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import SideBar from '@/components/SideBar.vue';
+import { ServerData } from '@/helpers/interfaces';
 
-@Component({
-  components: {
-    SideBar,
-  },
-})
+@Component
 export default class Overview extends Vue {
   @Prop() private serverId: string | undefined;
 
   mounted (): void {
-    /* console.log('serverId: ', this.serverId);
+    console.log('serverId: ', this.serverId);
     feathersClient.service('guild').get(this.serverId, { test: 'testd' }).then((data: ServerData | null) => {
       console.log(data);
       // eslint-disable-next-line no-underscore-dangle
       if (data != null) (this.$refs.data as HTMLSpanElement).innerHTML = data.fMsg || 'error';
-    }).catch((err: Error) => { console.log(err); }); */
+    }).catch((err: Error) => { console.log(err); });
   }
 }
 </script>
