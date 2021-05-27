@@ -11,16 +11,18 @@ module.exports = {
           850: '#1b232e',
         },
         blurple: {
-          300: '#7883f5',
-          400: '#616ded',
-          500: '#5865F2', // Default color
-          600: '#3b4af5',
-          700: '#2a3bf5',
+          300: '#97a6db',
+          400: '#8295d9',
+          500: '#7289DA', // Default color
+          600: '#5a78e6',
+          700: '#4368f0',
         },
         dRed: '#ED4245',
         dFuchsia: '#EB459E',
         dYellow: '#FEE75C',
         dGreen: '#57F287',
+        dark: '#2C2F33',
+        darker: '#23272A',
       },
     },
   },
