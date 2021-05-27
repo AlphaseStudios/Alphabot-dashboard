@@ -30,7 +30,7 @@
             >Account</router-link
           >
           <router-link
-            to="/dashboard"
+            to="/dashboard/pick"
             class="flex hover:text-gray-100 cursor-pointer"
             >Dashboard</router-link
           >
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div
-      :class="!$route.name ? '' : $route.name.includes('dashboard') ? '' : 'container mx-auto px-52 mt-3'"
+      :class="!$route.name ? '' : $route.name.includes('dashboard') && $route.name !== 'dashboard pick' ? '' : 'container mx-auto px-52 mt-3'"
     >
       <slot></slot>
     </div>

@@ -12,6 +12,10 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
+    path: '/dashboard',
+    redirect: 'dashboard/pick',
+  },
+  {
     path: '/dashboard/pick',
     name: 'dashboard pick',
     component: () => import('@/views/dashboard/ServerPicker.vue'),
