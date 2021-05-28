@@ -9,25 +9,37 @@ import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
 interface Screens {
-  mobile: number,
-  tablet: number;
-  laptop: number;
-  desktop: number;
+  mobile: { min: number, max: number },
+  tablet: { min: number, max: number },
+  laptop: { min: number, max: number },
+  desktop: { min: number, max: number },
 }
 
 type Screen = keyof Screens;
 
 @Component
 export default class Responsive extends Vue {
-  @Prop({ default: 'tablet' }) private screen: keyof Screens | undefined;
+  @Prop({ default: ['tablet'] }) private screen: Array<keyof Screens> | undefined;
 
   private show = false;
 
   private screens: Screens = {
-    mobile: 0,
-    tablet: 640,
-    laptop: 1024,
-    desktop: 1280,
+    mobile: {
+      min: 0,
+      max: 640,
+    },
+    tablet: {
+      min: 640,
+      max: 1024,
+    },
+    laptop: {
+      min: 1024,
+      max: 1280,
+    },
+    desktop: {
+      min: 1280,
+      max: 100000,
+    },
   };
 
   mounted (): void {
@@ -36,22 +48,29 @@ export default class Responsive extends Vue {
   }
 
   sizeListener (): void {
-    const selected: number = this.getSelectedSize() || 0;
-    if (window.screen.width < selected) {
-      this.show = false;
-    } else this.show = true;
+    const selected: { min: number, max: number } = this.getSelectedSize() || this.screens.mobile;
+    if (window.screen.width > selected.min && window.screen.width < selected.max) {
+      this.show = true;
+    } else this.show = false;
   }
 
-  getSelectedSize (): number | null {
-    let px: number | null = null;
-    Object.keys(this.screens).map((item: string) => {
-      if (Object.keys(this.screens).includes(item)) {
-        if (this.screen && this.screen === item) {
-          px = this.screens[item as Screen];
-        }
-      } else px = null;
-      return px;
-    });
+  getSelectedSize (): { min: number, max: number } | null {
+    let px: { min: number, max: number } | null = null;
+    const BreakException = {};
+    try {
+      Object.keys(this.screens).map((item: string) => {
+        if (Object.keys(this.screens).includes(item)) {
+          if (this.screen && this.screen.includes(item as Screen)) {
+            px = { min: this.screens[item as Screen].min, max: this.screens[this.screen[this.screen.length - 1] as Screen].max };
+            throw BreakException;
+          }
+        } else px = null;
+        return px;
+      });
+    } catch (e) {
+      if (e !== BreakException) throw e;
+    }
+
     return px;
   }
 }
