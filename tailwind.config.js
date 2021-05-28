@@ -29,7 +29,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundOpacity: ['active'],
+    },
   },
   plugins: [
     '@tailwindcss/typography',

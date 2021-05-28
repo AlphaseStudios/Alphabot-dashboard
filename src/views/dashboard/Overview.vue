@@ -18,6 +18,7 @@
       <div class="text-2xl">Information:</div>
       Mobile dashboard is not supported yet.
     </Responsive>
+    <Toast ref="mobileToast">test</Toast>
   </div>
 </template>
 
@@ -27,18 +28,21 @@ import { Prop, Component } from 'vue-property-decorator';
 import SideBar from '@/components/SideBar.vue';
 import Dashboard from '@/components/Dashboard.vue';
 import Responsive from '@/components/Responsive.vue';
+import Toast from '@/components/Toast.vue';
 
 @Component({
   components: {
     SideBar,
     Dashboard,
     Responsive,
+    Toast,
   },
 })
 export default class Overview extends Vue {
   @Prop() private serverId: string | undefined;
 
   mounted (): void {
+    (this.$refs.mobileToast as Toast).toggle();
     /* console.log('serverId: ', this.serverId);
     feathersClient.service('guild').get(this.serverId, { test: 'testd' }).then((data: ServerData | null) => {
       console.log(data);
