@@ -1,6 +1,6 @@
 <template>
   <div>
-    My servers
+    <div class="text-3xl">My servers</div>
     <BasicCard class="mt-3">
       <div>
         <ServerCard :class="index > 0 ? 'mt-2' : ''"
@@ -24,6 +24,7 @@ import { Component } from 'vue-property-decorator';
 import ServerCard from '@/components/ServerCard.vue';
 import BasicCard from '@/components/BasicCard.vue';
 import Vue from 'vue';
+import feathersClient from '@/feathers-client';
 
 @Component({
   components: {
@@ -37,5 +38,9 @@ export default class Server extends Vue {
   private index = 0;
 
   private items = [{ name: 'hello', description: 'world' }, { name: '2', description: '2' }, { name: 'three', description: '3' }];
+
+  mounted (): void {
+    feathersClient.emit('getServers');
+  }
 }
 </script>

@@ -1,35 +1,41 @@
 <template>
-  <div class="bg-gray-850 text-gray-400 p-3 text-xl height-nonav w-52">
-    <div v-for="(cats, cat, index) of categories" :key="index" class="mb-4">
-      <div>
-        <button
-          class="transition-all duration-75 -ml-2 mb-1 w-full rounded px-3 p-1 flex hover:text-gray-200 hover:bg-green-400 hover:bg-opacity-25 cursor-pointer"
-          :class="
-            Object.keys(categories)[index] === active.cat
-              ? 'bg-blue-500 bg-opacity-25'
-              : ''
-          "
-          @click="active = { cat: Object.keys(categories)[index], index: 0 }"
-          :title="Object.keys(categories)[index]"
-        >
-          <div class="truncate">{{ Object.keys(categories)[index] }}</div>
-        </button>
-        <button
-          class="transition-all duration-75 ml-1 mb-1 w-full rounded px-3 p-1 flex hover:text-gray-200 hover:bg-green-400 hover:bg-opacity-25 cursor-pointer"
-          :class="
-            active.cat === Object.keys(categories)[index] && active.index === i
-              ? 'bg-blue-500 bg-opacity-25'
-              : ''
-          "
-          @click="clickListener(Object.keys(categories)[index], i)"
-          v-for="(n, i) of cats"
-          :key="i"
-          :title="n"
-        >
+  <div class="flex flex-row">
+    <div class="bg-gray-825 text-gray-400 p-3 text-xl height-nonav w-52">
+      <div v-for="(cats, cat, index) of categories" :key="index" class="mb-4">
+        <div>
+          <button
+            class="transition-all duration-75 -ml-2 mb-1 w-full rounded px-3 p-1 flex hover:text-gray-200 hover:bg-green-400 hover:bg-opacity-25 cursor-pointer"
+            :class="
+              Object.keys(categories)[index] === active.cat
+                ? 'bg-blue-500 bg-opacity-25'
+                : ''
+            "
+            @click="active = { cat: Object.keys(categories)[index], index: 0 }"
+            :title="Object.keys(categories)[index]"
           >
-          <div class="ml-2 truncate">{{ n }}</div>
-        </button>
+            <div class="truncate">{{ Object.keys(categories)[index] }}</div>
+          </button>
+          <button
+            class="transition-all duration-75 ml-1 mb-1 w-full rounded px-3 p-1 flex hover:text-gray-200 hover:bg-green-400 hover:bg-opacity-25 cursor-pointer"
+            :class="
+              active.cat === Object.keys(categories)[index] &&
+              active.index === i
+                ? 'bg-blue-500 bg-opacity-25'
+                : ''
+            "
+            @click="clickListener(Object.keys(categories)[index], i)"
+            v-for="(n, i) of cats"
+            :key="i"
+            :title="n"
+          >
+            >
+            <div class="ml-2 truncate">{{ n }}</div>
+          </button>
+        </div>
       </div>
+    </div>
+    <div class="content">
+      <slot name="content"></slot>
     </div>
   </div>
 </template>

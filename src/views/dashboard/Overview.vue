@@ -1,6 +1,17 @@
 <template>
   <div>
-    <SideBar :categories="{'Main': ['adfassdadsasdassdasdasda', 'b', 'c', 'd', 'e', 'f', 'w'], 'If that name act fits imma eat a child': ['2', '3'], '3': ['t', 't']}" @active="logActive"></SideBar>
+    <SideBar
+      :categories="{
+        Main: ['adfassdadsasdassdasdasda', 'b', 'c', 'd', 'e', 'f', 'w'],
+        'If that name act fits imma eat a child': ['2', '3'],
+        '3': ['t', 't'],
+      }"
+      @active="logActive"
+    >
+      <template v-slot:content>
+        <Dashboard></Dashboard>
+      </template>
+    </SideBar>
   </div>
 </template>
 
@@ -8,10 +19,12 @@
 import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import SideBar from '@/components/SideBar.vue';
+import Dashboard from '@/components/Dashboard.vue';
 
 @Component({
   components: {
     SideBar,
+    Dashboard,
   },
 })
 export default class Overview extends Vue {

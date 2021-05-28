@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          850: '#1b232e',
+          825: '#1b232e',
+          850: '#1a222b',
+          875: '#181e26',
         },
         blurple: {
           300: '#97a6db',
