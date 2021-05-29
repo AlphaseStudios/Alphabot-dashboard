@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
 import BaseElement from '@/components/dashboard/BaseElement.vue';
 import Button from '@/components/Button.vue';
 

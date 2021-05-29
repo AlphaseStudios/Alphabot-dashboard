@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row">
-    <div class="bg-gray-825 text-gray-400 p-3 text-xl height-nonav w-52">
+    <div class="bg-gray-825 text-gray-400 p-3 text-xl height-nonav w-52 overflow-y-auto">
       <div v-for="(cats, cat, index) of categories" :key="index" class="mb-4">
         <div>
           <button
